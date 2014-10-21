@@ -1,8 +1,9 @@
 require 'set'
 
 class Generation
-  def initialize(cells)
+  def initialize(cells, rules)
     @live_cells = Set.new(cells)
+    @rules = rules
   end
 
   def population
@@ -10,6 +11,6 @@ class Generation
   end
 
   def tick
-    Generation.new([])
+    Generation.new([], @rules)
   end
 end
