@@ -23,3 +23,20 @@ describe 'set behavior' do
     expect(set1).to eq(set2)
   end
 end
+
+describe 'neighbor' do
+  let(:cell) { Cell.new(5,6) }
+  let(:neighbors) { cell.neighbors }
+
+  it 'numbers 8 per cell' do
+    expect(neighbors.length).to eq(8)
+  end
+
+  it 'is within range of cell' do
+    x, y = cell.x, cell.y
+    neighbors.each do |n|
+      expect(n.x.between?(x-1, x+1)).to eq(true)
+      expect(n.y.between?(y-1, y+1)).to eq(true)
+    end
+  end
+end
