@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+Dir['lib/visualizer/*.rb'].each { |file| require_relative file }
+
+class Conway < Thor
+  default_task :play
+
+  desc "VISUALIZER SIZE *POINTS",
+       "plays Game of Life with VISUALIZER on grid of size SIZE and seed POINTS"
+
+  def play(visualizer, size, *points)
+    vis = Object.const_get(visualizer.capitalize).new(size, points)
+    vis.run
+  end
+
+  def method_missing(method, *args)
+    args = ["play", method.to_s] + args
+    Conway.start(args)
+  end
+end
+
+Signal.trap("INT") do
+  exit
+end
+Signal.trap("TERM") do
+  exit
+end
+
+Conway.start(ARGV)
