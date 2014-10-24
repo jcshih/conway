@@ -10,7 +10,7 @@ class Conway < Thor
        "plays Game of Life with VISUALIZER on grid of size SIZE and seed POINTS"
 
   def play(visualizer, size, *points)
-    vis = Object.const_get(visualizer.capitalize).new(size, points)
+    vis = Object.const_get(visualizer.capitalize).new(size.to_i, points)
     vis.run
   end
 
