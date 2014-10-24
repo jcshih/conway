@@ -39,8 +39,6 @@ class Generation
   end
 
   def candidate_dead_cells
-    @live_cells.flat_map do |c|
-      c.neighbors
-    end.reduce(:+) - @live_cells
+    Set.new(@live_cells.flat_map { |c| c.neighbors }.reduce(:+)) - @live_cells
   end
 end
