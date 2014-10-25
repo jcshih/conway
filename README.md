@@ -6,3 +6,5 @@ Implementation of [Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_L
 ./conway &lt;visualizer&gt; &lt;size&gt; &lt;points&gt;
 
 ./conway ascii 30 1,1 2,2 0,3 1,3 2,3
+
+./conway gosu 50 25,25 26,25 24,26 25,26 25,27
