@@ -5,7 +5,7 @@ require 'dispel'
 require 'cell'
 require 'generation'
 
-class Ascii
+class AsciiPlayer
   def initialize(size, points)
     @size = size
     @gen = Generation.new(seed(points))
